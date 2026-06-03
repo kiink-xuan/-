@@ -1,0 +1,53 @@
+/* pages/order-list/order-list.wxss */
+.page { min-height: 100vh; background-color: #f5f5f5; }
+
+/* ===== Tab 栏 ===== */
+.tab-bar {
+  display: flex; background: #fff; position: sticky; top: 0; z-index: 10;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.05);
+}
+.tab-item {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  padding: 24rpx 0 0; position: relative; font-size: 28rpx; color: #666;
+}
+.tab-item.active { color: #FF6B35; font-weight: 600; }
+.tab-indicator {
+  width: 48rpx; height: 6rpx; background: #FF6B35; border-radius: 3rpx; margin-top: 14rpx;
+}
+
+/* ===== 订单卡片 ===== */
+.order-list { padding: 20rpx 24rpx; }
+.order-card {
+  background: #fff; border-radius: 20rpx; padding: 24rpx;
+  margin-bottom: 20rpx; box-shadow: 0 2rpx 10rpx rgba(0,0,0,0.05);
+}
+.order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16rpx; }
+.order-header-left { display: flex; align-items: center; }
+.order-icon { font-size: 30rpx; margin-right: 10rpx; }
+.order-no { font-size: 24rpx; color: #999; }
+.order-status { font-size: 26rpx; font-weight: 600; }
+.order-items { display: flex; flex-wrap: wrap; gap: 10rpx; margin-bottom: 16rpx; }
+.order-item-summary {
+  font-size: 24rpx; color: #666; background: #f8f8f8;
+  padding: 6rpx 16rpx; border-radius: 8rpx;
+}
+.order-footer { display: flex; justify-content: space-between; align-items: center; }
+.order-time { font-size: 22rpx; color: #bbb; }
+.order-total { font-size: 26rpx; color: #333; }
+.order-total-price { font-size: 30rpx; font-weight: bold; color: #FF6B35; }
+.order-actions { display: flex; justify-content: flex-end; gap: 16rpx; margin-top: 16rpx; padding-top: 16rpx; border-top: 1rpx solid #f5f5f5; }
+.order-action-btn {
+  padding: 10rpx 28rpx; border-radius: 28rpx; font-size: 24rpx; font-weight: 500;
+}
+.urge-btn { background: #FFF5F0; color: #FF6B35; border: 1rpx solid #FFE0D0; }
+.reorder-btn { background: #FF6B35; color: #fff; }
+
+/* ===== 空状态 ===== */
+.empty-state { display: flex; flex-direction: column; align-items: center; padding-top: 200rpx; }
+.empty-icon { font-size: 140rpx; margin-bottom: 30rpx; }
+.empty-text { font-size: 32rpx; color: #666; margin-bottom: 12rpx; }
+.empty-sub { font-size: 26rpx; color: #999; margin-bottom: 40rpx; }
+.empty-btn {
+  background: linear-gradient(135deg, #FF6B35, #FF8C60); color: #fff;
+  padding: 18rpx 56rpx; border-radius: 40rpx; font-size: 28rpx;
+}

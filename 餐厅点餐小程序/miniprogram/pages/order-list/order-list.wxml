@@ -1,0 +1,67 @@
+<!--pages/order-list/order-list.wxml — 订单列表-->
+<view class="page">
+  <!-- 状态 Tab 切换 -->
+  <view class="tab-bar">
+    <view
+      wx:for="{{tabs}}"
+      wx:key="value"
+      class="tab-item {{currentTab === item.value ? 'active' : ''}}"
+      data-value="{{item.value}}"
+      bindtap="onSwitchTab"
+    >
+      <text>{{item.label}}</text>
+      <view wx:if="{{currentTab === item.value}}" class="tab-indicator"></view>
+    </view>
+  </view>
+
+  <!-- 订单列表 -->
+  <view wx:if="{{filteredOrders.length > 0}}" class="order-list">
+    <view wx:for="{{filteredOrders}}" wx:key="id" class="order-card" bindtap="onOrderTap" data-id="{{item.id}}">
+      <!-- 订单头部 -->
+      <view class="order-header">
+        <view class="order-header-left">
+          <text class="order-icon">{{statusMap[item.status].icon}}</text>
+          <text class="order-no">{{item.id}}</text>
+        </view>
+        <text class="order-status" style="color: {{statusMap[item.status].color}}">
+          {{statusMap[item.status].text}}
+        </text>
+      </view>
+
+      <!-- 菜品摘要 -->
+      <view class="order-items">
+        <text wx:for="{{item.items}}" wx:key="key" wx:for-item="di" class="order-item-summary">
+          {{di.dish.name}} x{{di.count}}
+        </text>
+      </view>
+
+      <!-- 订单底部 -->
+      <view class="order-footer">
+        <text class="order-time">{{item.createTime}}</text>
+        <text class="order-total">合计：<text class="order-total-price">¥{{item.totalPrice}}</text></text>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view wx:if="{{item.status === 'pending'}}" class="order-actions">
+        <view class="order-action-btn urge-btn" catchtap="onUrgeOrder" data-id="{{item.id}}">
+          <text>🔔 催单</text>
+        </view>
+      </view>
+      <view wx:if="{{item.status === 'done'}}" class="order-actions">
+        <view class="order-action-btn reorder-btn" catchtap="onReorder" data-order="{{item}}">
+          <text>再来一单</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空订单 -->
+  <view wx:else class="empty-state">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无订单</text>
+    <text class="empty-sub">快去点餐吧～</text>
+    <view class="empty-btn" bindtap="onGoMenu">
+      <text>去点餐</text>
+    </view>
+  </view>
+</view>

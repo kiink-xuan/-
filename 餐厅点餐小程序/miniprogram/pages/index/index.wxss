@@ -1,0 +1,360 @@
+/* pages/index/index.wxss */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f5f5;
+  overflow: hidden;
+}
+
+/* ===== 搜索栏 ===== */
+.search-bar {
+  padding: 16rpx 24rpx;
+  background-color: #fff;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 36rpx;
+  padding: 12rpx 24rpx;
+  height: 68rpx;
+}
+
+.search-icon {
+  font-size: 28rpx;
+  margin-right: 12rpx;
+  opacity: 0.5;
+}
+
+.search-input {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.search-clear {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22rpx;
+}
+
+/* ===== 主体布局 ===== */
+.main-content {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ===== 左侧分类栏 ===== */
+.category-sidebar {
+  width: 180rpx;
+  background-color: #f8f8f8;
+  flex-shrink: 0;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 110rpx;
+  position: relative;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.category-item.active {
+  background-color: #fff;
+  color: #FF6B35;
+  font-weight: 500;
+}
+
+.category-icon {
+  font-size: 34rpx;
+  margin-bottom: 4rpx;
+}
+
+.category-name {
+  font-size: 24rpx;
+}
+
+.category-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 40rpx;
+  background: #FF6B35;
+  border-radius: 0 6rpx 6rpx 0;
+}
+
+/* ===== 右侧菜品列表 ===== */
+.dish-list-panel {
+  flex: 1;
+  background-color: #fff;
+  padding: 0 20rpx;
+}
+
+.dish-card {
+  display: flex;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+  position: relative;
+}
+
+.dish-card:last-child {
+  border-bottom: none;
+}
+
+/* 菜品图片 */
+.dish-image-wrap {
+  width: 160rpx;
+  height: 160rpx;
+  background: linear-gradient(135deg, #FFF5F0, #FFE8DC);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.dish-image {
+  font-size: 80rpx;
+}
+
+.dish-recommend-tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #FF6B35, #FF8C60);
+  color: #fff;
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 16rpx 0 16rpx 0;
+}
+
+/* 菜品信息 */
+.dish-info {
+  flex: 1;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 10rpx;
+}
+
+.dish-name-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dish-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+  margin-right: 12rpx;
+}
+
+.dish-tags {
+  display: flex;
+  gap: 8rpx;
+}
+
+.dish-tag {
+  font-size: 20rpx;
+  color: #FF6B35;
+  background-color: #FFF5F0;
+  padding: 2rpx 10rpx;
+  border-radius: 6rpx;
+  border: 1rpx solid #FFE0D0;
+}
+
+.dish-desc {
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dish-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.dish-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8rpx;
+}
+
+.dish-price {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #FF6B35;
+}
+
+.dish-original-price {
+  font-size: 22rpx;
+  color: #bbb;
+  text-decoration: line-through;
+}
+
+.dish-sales {
+  font-size: 22rpx;
+  color: #bbb;
+}
+
+/* 加购按钮 */
+.dish-add-btn {
+  position: absolute;
+  right: 0;
+  bottom: 24rpx;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background-color: #FF6B35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2rpx 8rpx rgba(255, 107, 53, 0.4);
+  transition: all 0.15s;
+}
+
+.dish-add-btn:active {
+  transform: scale(0.9);
+}
+
+.dish-add-btn.has-specs {
+  background-color: #fff;
+  border: 2rpx solid #FF6B35;
+  box-shadow: none;
+}
+
+.dish-add-btn.has-specs .add-icon {
+  color: #FF6B35;
+}
+
+.add-icon {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* ===== 底部购物车浮栏 ===== */
+.cart-float-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  background-color: #3d3d3d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx 0 24rpx;
+  z-index: 100;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.15);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.cart-float-bar.has-items {
+  background-color: #fff;
+  border-top: 1rpx solid #f0f0f0;
+}
+
+.cart-float-left {
+  display: flex;
+  align-items: center;
+}
+
+.cart-float-icon-wrap {
+  width: 88rpx;
+  height: 88rpx;
+  background: linear-gradient(135deg, #FF6B35, #FF8C60);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: -40rpx;
+  box-shadow: 0 4rpx 16rpx rgba(255, 107, 53, 0.5);
+}
+
+.cart-float-icon {
+  font-size: 44rpx;
+}
+
+.cart-float-badge {
+  position: absolute;
+  top: -6rpx;
+  right: -6rpx;
+  min-width: 36rpx;
+  height: 36rpx;
+  border-radius: 18rpx;
+  background-color: #FA5151;
+  color: #fff;
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8rpx;
+  border: 3rpx solid #fff;
+}
+
+.cart-float-info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.cart-float-price {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #FF6B35;
+}
+
+.cart-float-empty {
+  font-size: 26rpx;
+  color: #aaa;
+}
+
+.cart-float-tip {
+  font-size: 22rpx;
+  color: #999;
+}
+
+.cart-float-right {
+  height: 68rpx;
+  padding: 0 36rpx;
+  border-radius: 34rpx;
+  background-color: #555;
+  color: #aaa;
+  font-size: 26rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.cart-float-right.active {
+  background: linear-gradient(135deg, #FF6B35, #FF8C60);
+  color: #fff;
+}

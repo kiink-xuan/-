@@ -1,0 +1,68 @@
+<!--pages/order-confirm/order-confirm.wxml — 确认下单-->
+<view class="page">
+  <view class="container">
+    <!-- 用餐信息 -->
+    <view class="card info-section">
+      <view class="section-title">用餐信息</view>
+      <view class="info-row">
+        <text class="info-row-label">用餐人数</text>
+        <view class="info-row-right">
+          <view class="guest-btn {{guestCount <= 1 ? 'disabled' : ''}}" catchtap="onGuestDecrease"><text>-</text></view>
+          <text class="guest-value">{{guestCount}} 人</text>
+          <view class="guest-btn" catchtap="onGuestIncrease"><text>+</text></view>
+        </view>
+      </view>
+      <view class="info-row">
+        <text class="info-row-label">桌号</text>
+        <input class="info-row-input" placeholder="请输入桌号" value="{{tableNo}}" bindinput="onTableInput" />
+      </view>
+      <view class="info-row">
+        <text class="info-row-label">备注</text>
+        <input class="info-row-input" placeholder="口味、忌口等" value="{{remark}}" bindinput="onRemarkInput" />
+      </view>
+    </view>
+
+    <!-- 订单明细 -->
+    <view class="card order-section">
+      <view class="section-title">订单明细</view>
+      <view wx:for="{{cartList}}" wx:key="key" class="order-item">
+        <text class="order-item-image">{{item.dish.image}}</text>
+        <view class="order-item-info">
+          <text class="order-item-name">{{item.dish.name}}</text>
+          <text wx:if="{{item.spec}}" class="order-item-spec">{{item.spec}}</text>
+        </view>
+        <text class="order-item-count">x{{item.count}}</text>
+        <text class="order-item-price">¥{{item.dish.price * item.count}}</text>
+      </view>
+    </view>
+
+    <!-- 价格汇总 -->
+    <view class="card price-summary">
+      <view class="price-row">
+        <text>商品小计</text>
+        <text class="price-value">¥{{totalPrice}}</text>
+      </view>
+      <view class="price-row">
+        <text>打包费</text>
+        <text class="price-value">¥{{packageFee}}</text>
+      </view>
+      <view class="price-row price-total-row">
+        <text class="price-total-label">实付金额</text>
+        <text class="price-total-value">¥{{totalPrice + packageFee}}</text>
+      </view>
+    </view>
+
+    <view style="height: 160rpx;"></view>
+  </view>
+
+  <!-- 底部提交按钮 -->
+  <view class="submit-bar">
+    <view class="submit-info">
+      <text class="submit-label">实付</text>
+      <text class="submit-price">¥{{totalPrice + packageFee}}</text>
+    </view>
+    <view class="submit-btn" bindtap="onSubmitOrder">
+      <text>确认下单</text>
+    </view>
+  </view>
+</view>
