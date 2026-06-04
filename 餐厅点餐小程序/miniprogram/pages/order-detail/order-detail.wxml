@@ -57,7 +57,11 @@
     <view class="card">
       <view class="section-title">菜品清单</view>
       <view wx:for="{{order.items}}" wx:key="key" class="dish-row">
-        <text class="dish-row-image">{{item.dish.image}}</text>
+        <view class="dish-row-img">
+          <view class="food-image cat-bg-{{item.dish.categoryId}}">
+            <text class="food-image-text" style="font-size: 24rpx;">{{item.dish.name[0]}}</text>
+          </view>
+        </view>
         <view class="dish-row-info">
           <text class="dish-row-name">{{item.dish.name}}</text>
           <text wx:if="{{item.spec}}" class="dish-row-spec">{{item.spec}}</text>

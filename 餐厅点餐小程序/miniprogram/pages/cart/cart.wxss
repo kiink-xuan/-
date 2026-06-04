@@ -20,10 +20,10 @@
 .cart-item:last-child { border-bottom: none; }
 .cart-item-image-wrap {
   width: 120rpx; height: 120rpx; border-radius: 14rpx;
-  background: linear-gradient(135deg, #FFF5F0, #FFE8DC);
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  overflow: hidden;
 }
-.cart-item-image { font-size: 60rpx; }
+.cart-food-text { font-size: 40rpx; }
 .cart-item-info { flex: 1; margin-left: 20rpx; }
 .cart-item-name { font-size: 30rpx; font-weight: 600; color: #333; display: block; margin-bottom: 6rpx; }
 .cart-item-spec { font-size: 24rpx; color: #999; display: block; margin-bottom: 12rpx; }

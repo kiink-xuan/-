@@ -73,5 +73,20 @@ Page({
   // 去菜单
   onGoMenu() {
     wx.switchTab({ url: '/pages/index/index' });
+  },
+
+  // 下拉刷新
+  onPullDownRefresh() {
+    this.loadOrders();
+    wx.stopPullDownRefresh();
+    wx.showToast({ title: '已刷新', icon: 'success', duration: 1000 });
+  },
+
+  // 分享
+  onShareAppMessage() {
+    return {
+      title: '我的订单 - 好味道餐厅',
+      path: '/pages/index/index'
+    };
   }
 });

@@ -54,7 +54,9 @@
 .section-title { font-size: 30rpx; font-weight: bold; color: #333; margin-bottom: 16rpx; }
 .dish-row { display: flex; align-items: center; padding: 16rpx 0; border-bottom: 1rpx solid #f8f8f8; }
 .dish-row:last-child { border-bottom: none; }
-.dish-row-image { font-size: 40rpx; margin-right: 16rpx; }
+.dish-row-img {
+  width: 60rpx; height: 60rpx; border-radius: 10rpx; overflow: hidden; flex-shrink: 0; margin-right: 16rpx;
+}
 .dish-row-info { flex: 1; }
 .dish-row-name { font-size: 28rpx; color: #333; display: block; }
 .dish-row-spec { font-size: 24rpx; color: #999; display: block; }

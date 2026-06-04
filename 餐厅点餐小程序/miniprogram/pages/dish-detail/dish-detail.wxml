@@ -2,8 +2,8 @@
 <view class="page">
   <view wx:if="{{dish}}" class="container">
     <!-- 菜品大图 -->
-    <view class="dish-hero">
-      <text class="dish-hero-image">{{dish.image}}</text>
+    <view class="dish-hero cat-bg-{{dish.categoryId}}">
+      <text class="dish-hero-text">{{dish.name[0]}}</text>
       <view wx:if="{{dish.tags && dish.tags.length}}" class="hero-tags">
         <text wx:for="{{dish.tags}}" wx:key="*this" class="hero-tag">{{item}}</text>
       </view>

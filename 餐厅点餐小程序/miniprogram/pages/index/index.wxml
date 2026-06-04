@@ -47,9 +47,11 @@
       bindscroll="onDishScroll"
     >
       <view wx:for="{{filteredDishes}}" wx:key="id" class="dish-card" bindtap="onDishTap" data-dish="{{item}}">
-        <!-- 菜品图片（用 emoji 代替） -->
+        <!-- 菜品图片 -->
         <view class="dish-image-wrap">
-          <text class="dish-image">{{item.image}}</text>
+          <view class="food-image cat-bg-{{item.categoryId}}">
+            <text class="food-image-text">{{item.name[0]}}</text>
+          </view>
           <view wx:if="{{item.recommend}}" class="dish-recommend-tag">推荐</view>
         </view>
 
@@ -82,6 +84,15 @@
       <view style="height: 140rpx;"></view>
     </scroll-view>
   </view>
+
+  <!-- 加购飞入动画小球 -->
+  <view
+    wx:for="{{flyBalls}}"
+    wx:key="id"
+    class="fly-ball"
+    style="left: {{item.x}}px; top: {{item.y}}px;"
+    animation="{{item.animation}}"
+  ></view>
 
   <!-- 底部购物车浮栏 -->
   <view class="cart-float-bar {{cartTotalCount > 0 ? 'has-items' : ''}}" bindtap="onGoToCart">

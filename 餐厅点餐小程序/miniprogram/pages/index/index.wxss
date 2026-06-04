@@ -120,7 +120,6 @@
 .dish-image-wrap {
   width: 160rpx;
   height: 160rpx;
-  background: linear-gradient(135deg, #FFF5F0, #FFE8DC);
   border-radius: 16rpx;
   display: flex;
   align-items: center;
@@ -128,10 +127,6 @@
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
-}
-
-.dish-image {
-  font-size: 80rpx;
 }
 
 .dish-recommend-tag {
@@ -256,6 +251,18 @@
   color: #fff;
   font-weight: 300;
   line-height: 1;
+}
+
+/* ===== 加购飞入动画小球 ===== */
+.fly-ball {
+  position: fixed;
+  width: 24rpx;
+  height: 24rpx;
+  border-radius: 50%;
+  background: #FF6B35;
+  z-index: 200;
+  pointer-events: none;
+  box-shadow: 0 2rpx 8rpx rgba(255,107,53,0.5);
 }
 
 /* ===== 底部购物车浮栏 ===== */

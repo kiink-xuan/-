@@ -8,13 +8,18 @@ App({
     // 购物车总金额
     cartTotalPrice: 0,
     // 订单列表
-    orders: []
+    orders: [],
+    // 用户信息
+    userInfo: null,
+    // 是否已登录
+    isLogin: false
   },
 
   onLaunch() {
-    // 启动时从本地存储恢复购物车数据
+    // 启动时从本地存储恢复数据
     this.loadCartFromStorage();
     this.loadOrdersFromStorage();
+    this.loadUserFromStorage();
   },
 
   // 从本地存储加载购物车
@@ -153,7 +158,32 @@ App({
     this.saveOrdersToStorage();
     this.clearCart();
 
+    // 启动订单状态自动流转模拟
+    this.simulateOrderProgress(order.id);
+
     return order;
+  },
+
+  // 模拟订单状态自动流转（商家接单→备菜→上菜→完成）
+  simulateOrderProgress(orderId) {
+    const stages = [
+      { status: 'cooking', delay: 4000 },  // 4秒后商家接单，开始备菜
+      { status: 'served',  delay: 10000 }, // 10秒后菜品上桌
+      { status: 'done',    delay: 20000 }  // 20秒后自动完成
+    ];
+
+    stages.forEach(({ status, delay }) => {
+      setTimeout(() => {
+        const order = this.globalData.orders.find(o => o.id === orderId);
+        if (order && order.status !== 'done') {
+          this.updateOrderStatus(orderId, status);
+          // 触发全局事件，通知订单详情页刷新
+          if (typeof wx !== 'undefined') {
+            wx.vibrateShort({ type: 'light' });
+          }
+        }
+      }, delay);
+    });
   },
 
   // 生成订单号
@@ -188,5 +218,41 @@ App({
       return this.globalData.orders;
     }
     return this.globalData.orders.filter(o => o.status === status);
+  },
+
+  // 保存用户信息到本地
+  saveUserToStorage() {
+    try {
+      wx.setStorageSync('userInfo', this.globalData.userInfo);
+      wx.setStorageSync('isLogin', this.globalData.isLogin);
+    } catch (e) {
+      console.error('保存用户信息失败', e);
+    }
+  },
+
+  // 从本地加载用户信息
+  loadUserFromStorage() {
+    try {
+      const userInfo = wx.getStorageSync('userInfo') || null;
+      const isLogin = wx.getStorageSync('isLogin') || false;
+      this.globalData.userInfo = userInfo;
+      this.globalData.isLogin = isLogin;
+    } catch (e) {
+      console.error('加载用户信息失败', e);
+    }
+  },
+
+  // 设置用户信息
+  setUserInfo(userInfo) {
+    this.globalData.userInfo = userInfo;
+    this.globalData.isLogin = true;
+    this.saveUserToStorage();
+  },
+
+  // 清除用户信息（退出登录）
+  logout() {
+    this.globalData.userInfo = null;
+    this.globalData.isLogin = false;
+    this.saveUserToStorage();
   }
 });

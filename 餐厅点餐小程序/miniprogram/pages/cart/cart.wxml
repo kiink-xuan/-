@@ -16,7 +16,9 @@
       <view wx:for="{{cartList}}" wx:key="key" class="cart-item">
         <!-- 菜品图片 -->
         <view class="cart-item-image-wrap">
-          <text class="cart-item-image">{{item.dish.image}}</text>
+          <view class="food-image cat-bg-{{item.dish.categoryId}}">
+            <text class="food-image-text cart-food-text">{{item.dish.name[0]}}</text>
+          </view>
         </view>
 
         <!-- 菜品信息 -->

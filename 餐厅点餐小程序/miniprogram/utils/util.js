@@ -2,11 +2,11 @@
 
 /**
  * 格式化价格显示
- * @param {number} price - 价格（分或元）
+ * @param {number} price - 价格（元）
  * @returns {string} 格式化后的价格字符串
  */
 function formatPrice(price) {
-  return '¥' + (price / 100).toFixed(2);
+  return '¥' + Number(price).toFixed(2);
 }
 
 /**

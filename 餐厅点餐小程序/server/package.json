@@ -1,0 +1,14 @@
+{
+  "name": "restaurant-server",
+  "version": "1.0.0",
+  "description": "好味道餐厅点餐小程序后端服务",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  }
+}

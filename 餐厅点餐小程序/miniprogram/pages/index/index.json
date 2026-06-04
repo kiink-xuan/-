@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "好味道餐厅",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark",
   "usingComponents": {}
 }
